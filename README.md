@@ -4,7 +4,7 @@ This repo includes a small reproducible example of a Xamarin.Forms `CollectionVi
 
 I am posting this in the hope that the Xamarin.Forms team will be able to replicate and fix the issue. While there are workarounds (see [Delay Quick Fix](#delay-quick-fix) below), I feel that this is a core issue that should be solved at the root.
 
-![CollectionView glitches when refreshed multiple times](screen-recordings/refresh-multiple-times.mp4)
+![CollectionView glitches when refreshed multiple times](screen-recordings/refresh-multiple-times.gif)
 
 The glitch is a related to a label in the `CollectionView` with a visibility toggle (`IsVisible`):
 
