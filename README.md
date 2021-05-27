@@ -34,7 +34,7 @@ When the CollectionView is refreshed once:
 
 ## Delay Quick Fix
 
-The glitch can be fixed by adding a delay. But in a larger scale production app I am working on this solution is not feasible.
+The glitch can be fixed by adding a delay. But in a large scale production app I am working on this solution is not feasible because of our Model View View Model (MVVM) architecture.
 
 ```c#
 private async void ClearAndReloadRestaurants(object sender, EventArgs e)
