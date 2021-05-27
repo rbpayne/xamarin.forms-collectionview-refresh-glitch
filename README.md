@@ -2,7 +2,7 @@
 
 This repo includes a small reproducible example of a Xamarin.Forms `CollectionView` animation glitch. The glitch occurs when an entire `CollectionView`—backed by an `ObservableCollection`—is cleared and then reloaded multiple times. The glitch occurs in iOS but not in Android.
 
-I am posting this in the hope that the Xamarin.Forms team will be able to replicate and fix the issue. While there are workarounds (see [Delay Quick Fix](#delay-quick-fix) below), I feel that this is a core issue that should be solved at the root.
+I am posting this in the hope that the Xamarin.Forms team will be able to replicate and fix the issue. While there are [workarounds](#workaround), I feel that this is a core issue that should be solved at the root.
 
 ![CollectionView glitches when refreshed multiple times](screen-recordings/refresh-multiple-times.gif)
 
@@ -32,9 +32,9 @@ When the CollectionView is refreshed once:
 
 ![Refreshing the CollectionView once](screen-recordings/refresh-once.gif)
 
-## Delay Quick Fix
+## Workaround
 
-The glitch can be fixed by adding a delay. But in a large scale production app I am working on this solution is not feasible because of our Model View View Model (MVVM) architecture.
+You can workaround this issue by adding a delay. But in a large scale production app I am working on this solution is not feasible because of our Model View View Model (MVVM) architecture.
 
 ```c#
 private async void ClearAndReloadRestaurants(object sender, EventArgs e)
