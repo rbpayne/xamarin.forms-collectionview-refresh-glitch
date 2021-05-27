@@ -1,23 +1,23 @@
-namespace CollectionViewClearReloadGlitch
+namespace CollectionViewClearReloadGlitch.Models
 {
     public class Restaurant
     {
         public string Name { get; }
-        private int Rating { get; }
+        private readonly int _rating;
         public string Stars { get; private set; }
-        public bool StarsAreVisible => Rating > 0;
+        public bool StarsAreVisible => _rating > 0;
 
         public Restaurant(string name, int rating = 0)
         {
             Name = name;
-            Rating = rating;
+            _rating = rating;
 
             SetStars();
         }
 
         private void SetStars()
         {
-            switch (Rating)
+            switch (_rating)
             {
                 case 0:
                     Stars = "";

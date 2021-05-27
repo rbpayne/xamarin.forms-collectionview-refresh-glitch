@@ -1,48 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using CollectionViewClearReloadGlitch.Models;
+using CollectionViewClearReloadGlitch.ViewModels;
 
 namespace CollectionViewClearReloadGlitch
 {
     public partial class MainPage
     {
-        public ObservableCollection<Restaurant> Restaurants { get; } = new ObservableCollection<Restaurant>();
+        private static readonly RestaurantCollection RestaurantCollection = new RestaurantCollection();
+        private readonly RestaurantCollectionViewModel _viewModel;
 
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = this;
-            RefreshRestaurants();
+            BindingContext = _viewModel = new RestaurantCollectionViewModel(RestaurantCollection);
         }
 
-        private void RefreshRestaurants()
-            => GetDefaultRestaurants().ForEach(restaurant => Restaurants.Add(restaurant));
-
-        private static List<Restaurant> GetDefaultRestaurants()
-        {
-            return new List<Restaurant>()
-            {
-                new Restaurant("McDonald's"),
-                new Restaurant("Chic-fil-a"),
-                new Restaurant("Burger King", 3),
-                new Restaurant("Sonic", 5),
-            };
-        }
-
-        private void ClearAndReloadRestaurants(object sender, EventArgs e)
-        {
-            Restaurants.Clear();
-
-            // This fixes the animation problem but may not scale in a larger app
-            // await Task.Delay(100);
-
-            RefreshRestaurants();
-        }
-
-        private void AddRestaurant(object sender, EventArgs e)
-            => Restaurants.Add(new Restaurant("Red Robin", 4));
-
-        private void RemoveRestaurant(object sender, EventArgs e)
-            => Restaurants.RemoveAt(Restaurants.Count - 1);
+        private void RefreshRestaurants(object sender, EventArgs e) => _viewModel.RefreshRestaurants();
+        private void AddRestaurant(object sender, EventArgs e) => _viewModel.AddRestaurant();
+        private void RemoveRestaurant(object sender, EventArgs e) => _viewModel.RemoveRestaurant();
     }
 }

@@ -2,11 +2,11 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:CollectionViewClearReloadGlitch"
              xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:viewModels="clr-namespace:CollectionViewClearReloadGlitch.ViewModels;assembly=CollectionViewClearReloadGlitch"
              x:Class="CollectionViewClearReloadGlitch.MainPage"
              iOsSpecific:Page.UseSafeArea="true"
-             x:DataType="local:MainPage">
+             x:DataType="viewModels:RestaurantCollectionViewModel">
 
     <StackLayout Margin="16">
         <Label Text="Fast Food" FontSize="Title" HorizontalTextAlignment="Center" />
@@ -19,9 +19,9 @@
             <Label Grid.Column="1" Text="Rating" FontAttributes="Bold" />
         </Grid>
 
-        <CollectionView ItemsSource="{Binding Restaurants}">
+        <CollectionView ItemsSource="{Binding RestaurantViewModels}">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="local:Restaurant">
+                <DataTemplate x:DataType="viewModels:RestaurantViewModel">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
@@ -47,7 +47,7 @@
             Text="Clear and Reload Restaurants"
             BackgroundColor="Indigo"
             TextColor="White"
-            Clicked="ClearAndReloadRestaurants" />
+            Clicked="RefreshRestaurants" />
         <Button
             Text="(+) Add Restaurant"
             BackgroundColor="Aquamarine"
