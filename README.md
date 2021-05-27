@@ -22,15 +22,15 @@ The glitch does not appear when:
 
 Items are added to the CollectionView:
 
-![Adding items to the CollectionView](screen-recordings/add-items.mp4)
+![Adding items to the CollectionView](screen-recordings/add-items.gif)
 
 Items are removed from the CollectionView:
 
-![Removing items from the CollectionView](screen-recordings/remove-items.mp4)
+![Removing items from the CollectionView](screen-recordings/remove-items.gif)
 
 When the CollectionView is refreshed once:
 
-![Refreshing the CollectionView once](screen-recordings/refresh-once.mp4)
+![Refreshing the CollectionView once](screen-recordings/refresh-once.gif)
 
 ## Delay Quick Fix
 
@@ -48,4 +48,4 @@ private async void ClearAndReloadRestaurants(object sender, EventArgs e)
 }
 ```
 
-![Refreshing the CollectionView with a delay](screen-recordings/refresh-with-delay.mp4)
+![Refreshing the CollectionView with a delay](screen-recordings/refresh-with-delay.gif)
