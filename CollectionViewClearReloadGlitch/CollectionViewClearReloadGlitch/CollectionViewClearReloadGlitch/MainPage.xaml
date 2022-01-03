@@ -8,8 +8,10 @@
              iOsSpecific:Page.UseSafeArea="true"
              x:DataType="local:MainPage">
 
-    <StackLayout Margin="16">
+    <StackLayout Margin="16" VerticalOptions="Fill">
+
         <Label Text="Fast Food" FontSize="Title" HorizontalTextAlignment="Center" />
+
         <Grid BackgroundColor="Aquamarine" Padding="8">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -18,6 +20,31 @@
             <Label Text="Name" FontAttributes="Bold" />
             <Label Grid.Column="1" Text="Rating" FontAttributes="Bold" />
         </Grid>
+
+        <!-- Uncomment the following for StackLayout workaround -->
+        <!-- <StackLayout Spacing="0" BindableLayout.ItemsSource="{Binding Restaurants}"> -->
+        <!--     <BindableLayout.ItemTemplate> -->
+        <!--         <DataTemplate x:DataType="local:Restaurant"> -->
+        <!--             <Grid> -->
+        <!--                 <Grid.ColumnDefinitions> -->
+        <!--                     <ColumnDefinition /> -->
+        <!--                     <ColumnDefinition /> -->
+        <!--                 </Grid.ColumnDefinitions> -->
+        <!--                 <Label -->
+        <!--                     Padding="0, 8" -->
+        <!--                     Text="{Binding Name}" -->
+        <!--                     Margin="0,8" /> -->
+        <!--                 <Label -->
+        <!--                     Grid.Column="1" -->
+        <!--                     Padding="8" -->
+        <!--                     BackgroundColor="Chartreuse" -->
+        <!--                     Text="{Binding Stars}" -->
+        <!--                     Margin="0,8" -->
+        <!--                     IsVisible="{Binding StarsAreVisible}" /> -->
+        <!--             </Grid> -->
+        <!--         </DataTemplate> -->
+        <!--     </BindableLayout.ItemTemplate> -->
+        <!-- </StackLayout> -->
 
         <CollectionView ItemsSource="{Binding Restaurants}">
             <CollectionView.ItemTemplate>
@@ -43,21 +70,22 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button
-            Text="Clear and Reload Restaurants"
-            BackgroundColor="Indigo"
-            TextColor="White"
-            Clicked="ClearAndReloadRestaurants" />
-        <Button
-            Text="(+) Add Restaurant"
-            BackgroundColor="Aquamarine"
-            TextColor="Black"
-            Clicked="AddRestaurant" />
-        <Button
-            Text="(-) Remove Restaurant"
-            BackgroundColor="Black"
-            TextColor="White"
-            Clicked="RemoveRestaurant" />
+        <StackLayout VerticalOptions="EndAndExpand">
+            <Button
+                Text="Clear and Reload Restaurants"
+                BackgroundColor="Indigo"
+                TextColor="White"
+                Clicked="ClearAndReloadRestaurants" />
+            <Button
+                Text="(+) Add Restaurant"
+                BackgroundColor="Aquamarine"
+                TextColor="Black"
+                Clicked="AddRestaurant" />
+            <Button
+                Text="(-) Remove Restaurant"
+                BackgroundColor="Black"
+                TextColor="White"
+                Clicked="RemoveRestaurant" />
+        </StackLayout>
     </StackLayout>
-
 </ContentPage>

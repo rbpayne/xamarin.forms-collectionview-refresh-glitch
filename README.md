@@ -32,9 +32,11 @@ When the CollectionView is refreshed once:
 
 ![Refreshing the CollectionView once](screen-recordings/refresh-once.gif)
 
-## Workaround
+## Workarounds
 
-You can workaround this issue by adding a delay. But in a large scale production app I am working on this solution is not feasible because of our Model View View Model (MVVM) architecture.
+### 1. Add Delay
+
+Add a delay to the collection refresh. However, in a large scale production app this may not be feasible when using the Model View View Model (MVVM) architecture.
 
 ```c#
 private async void ClearAndReloadRestaurants(object sender, EventArgs e)
@@ -48,4 +50,14 @@ private async void ClearAndReloadRestaurants(object sender, EventArgs e)
 }
 ```
 
-![Refreshing the CollectionView with a delay](screen-recordings/refresh-with-delay.gif)
+### 2. Use a `StackLayout`
+
+Instead of a `CollectionView`, use a `StackLayout` with a `BindableLayout` property. The tradeoff is that you lose the smooth animation when the collection is refreshed.
+
+```xaml
+<StackLayout Spacing="0" BindableLayout.ItemsSource="{Binding Restaurants}">
+    <BindableLayout.ItemTemplate>
+        ...
+    </BindableLayout.ItemTemplate>
+</StackLayout>
+```
